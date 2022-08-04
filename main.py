@@ -3,6 +3,8 @@ import os
 import discord
 import schedule
 import time
+from keep_alive import keep_alive
+
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -21,8 +23,8 @@ async def kremowka():
     with open('kremowka.jpeg', 'rb') as f:
         picture = discord.File(f)
         await channel.send(file=picture)
-
-
+keep_alive()
 client.run(TOKEN)
 schedule.every().day.at("21:37").do(kremowka)
+
 
